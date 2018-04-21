@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+	char temp[512],c[60],a[]="printf",ch,alp='a';
+	int i=0,result=0,j=0,k=0;
+	FILE *fp,*f1;
+	f1=fopen("output.txt","w");
+	fp=fopen("name.txt","r");
+	if(fp==NULL)
+	{
+		printf("error\n");
+	}
+	fprintf(f1,"<!DOCTYPE html>\n<html>\n<body>\n");
+	while(fgets(temp,512,fp)!=NULL){
+		if((strstr(temp,a))!=NULL){
+			result = 1;
+			fprintf(f1,"<p id=");
+			alp=alp+i;
+			fputc('"',f1);
+			fputc(alp,f1);
+			fputc('"',f1);
+			fprintf(f1,"></p>\n");
+			fprintf(f1,"<script>\ndocument.getElementById(");
+			fputc('"',f1);
+			fputc(alp,f1);
+			fputc('"',f1);
+			fprintf(f1,").innerHTML = ");
+			while(temp[k+7]!='\0')
+			{
+				ch=temp[k+7];
+				if(ch==')')
+				{
+				}
+				else if(ch=='(')
+				{	
+				}
+				else{
+				putc(ch,f1);
+				}
+				k++;
+			}
+			fprintf(f1,"</script>\n");
+			i++;
+		}
+	j++;	
+	}
+	fprintf(f1,"</body>\n</html>");
+	fclose(fp);
+	fclose(f1);
+return 0;
+}
